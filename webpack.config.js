@@ -6,6 +6,7 @@ module.exports = {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
   },
+  // entry: './src/index.js',
   // webpack 5 comes with devServer which loads in development mode
   devServer: {
     contentBase: path.join(__dirname, '/public'),
@@ -23,10 +24,13 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+      },
     ],
   },
-
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css'],
   },
 };
